@@ -1,0 +1,63 @@
+{% extends 'header.html' %}
+
+{% block body %}
+
+<div class="container">
+  <ul class="nav nav-pills nav-fill flex-column pt-3 pb-3">
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/face_detection">Face detection</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/student-attendance">View attendance</a>
+    </li>
+  </ul>
+
+  <div class="content">
+
+    <style>.hidden {
+        display: none !important;
+        visibility: hidden;
+    }</style>
+
+    <h1>Video Streaming Demonstration</h1>
+
+    <form class="form" id="saveForm">
+      <div class="form-group hidden">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autofocus class="form-control" value="{{current_user.id}}" required disabled="true">
+      </div>
+
+      <div class="form-group">
+        <input value="Start" type="submit" name="button" class="btn btn-default btn-lg">
+      </div>
+
+    </form>
+
+
+
+    <img id="save_faces">
+
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<script>
+$("#save_faces").hide();
+$("#saveForm").submit(function(e){
+  e.preventDefault();
+  name = $("#name").val();
+  $("#save_faces").attr("src", "{{ url_for('save_face_feed') }}?person_name="+name)
+  $("#save_faces").show()
+});
+
+
+</script>
+
+
+
+{% endblock %}

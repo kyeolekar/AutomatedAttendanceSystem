@@ -1,0 +1,72 @@
+{% extends 'header.html' %}
+
+{% block body %}
+
+<div class="container pt-3">
+
+  <ul class="nav nav-pills nav-fill flex-column">
+    <li class="nav-item">
+      <a class="nav-link" href="/dashboard">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/staff/students">Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="/staff/attendance">Attendance</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/staff/attendance/records">Records</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" href="/timetable">Timetable</a>
+    </li>
+  </ul>
+
+<form class="form-horizontal" action="/timetable" method="POST">
+<fieldset>
+
+{{message}}
+
+<!-- Form Name -->
+<legend>Auto Start Recognition System Form</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Name</label>
+  <div class="col-md-5">
+  <input id="name" name="name" type="text" placeholder="Enter the class name" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="time">Hour</label>
+  <div class="col-md-5">
+  <input id="hour" name="hour" type="number" placeholder="24 Hour Format" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="time">Minute</label>
+  <div class="col-md-5">
+  <input id="minute" name="minute" type="number" placeholder="24 Hour Format" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<div class="form-group">
+  <input type="submit" class="btn btn-lg btn-danger" value="Submit">
+</div>
+
+</fieldset>
+</form>
+
+
+
+</div>
+{% endblock %}

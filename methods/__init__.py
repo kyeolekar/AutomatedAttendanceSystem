@@ -1,0 +1,2 @@
+from methods.FaceDetector import FaceDetector
+from methods.FaceRecognition import FaceRecognition

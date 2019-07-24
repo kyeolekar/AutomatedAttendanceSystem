@@ -1,0 +1,65 @@
+{% extends 'header.html' %}
+
+{% block body %}
+
+<div class="container pt-3">
+<ul class="nav nav-pills nav-fill flex-column">
+  <li class="nav-item">
+    <a class="nav-link" href="/dashboard">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/staff/students">Students</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="/staff/attendance">Attendance</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/staff/attendance/records">Records</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="/timetable">Timetable</a>
+  </li>
+</ul>
+<div class="content pt-3">
+
+  <h1>Train database</h1>
+
+  <a href="/start-training"><input type="button" value="Start Training" class="btn btn-lg btn-primary"></a>
+  {{message}}
+
+
+  <h1 style="margin-top:20px;">Recognition system</h1>
+
+  <form class="form" id="rform">
+    <div class="form-group">
+      <input type="submit" name="submit" value="Start recognition" class="btn btn-lg">
+    </div>
+  </form>
+
+  <input type="button" name="remove" value="Stop Recognition" class="btn btn-lg" id="remove">
+
+  <img id="recognise">
+
+
+</div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+$("#recognise").hide();
+$("#rform").submit(function(e){
+  e.preventDefault();
+  $("#recognise").attr("src", "{{ url_for('recognition_feed') }}")
+  $("#recognise").show()
+});
+
+$("#remove").click(function(){
+  $("#recognise").remove();
+})
+
+</script>
+
+{% endblock %}
